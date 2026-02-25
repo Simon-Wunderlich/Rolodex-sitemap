@@ -7,24 +7,28 @@ body {
       overflow: hidden;
 }
 
-/**/
-/* body::after { */
-/*   content: ""; */
-/*   position: absolute; */
-/*   top: 0; */
-/*   left: 0; */
-/*   width: 100vw; */
-/*   height: 100vh; */
-/*   background: repeating-linear-gradient( */
-/*     0deg, */
-/*     black, */
-/*     black 1px, */
-/*     transparent 1px, */
-/*     transparent 2px */
-/*   ); */
-/*   opacity: 0.5; */
-/* } */
-/**/
+html {
+	overscroll-behavior: none;
+}
+
+body::after { 
+   content: ""; 
+   position: absolute; 
+   top: 0; 
+   left: 0; 
+   width: 100vw;
+   height: 100vh; 
+   background: repeating-linear-gradient(
+     0deg,
+     black, 
+     black 1px, 
+     transparent 1px,
+     transparent 2px 
+   ); 
+   pointer-events: none;
+   opacity: 0.5;
+ }
+
 
 a {
     width: 100%;

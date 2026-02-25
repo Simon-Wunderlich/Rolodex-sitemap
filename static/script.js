@@ -21,6 +21,43 @@ document.addEventListener("wheel", (event) => {
   }
 });
 
+var initialX = null;
+var initialY = null;
+
+document.body.addEventListener("touchstart", startTouch, false);
+document.body.addEventListener("touchend", moveTouch, false); // use touchend to calculate results
+
+function startTouch(e) {
+  initialX = e.changedTouches[0].clientX;
+  initialY = e.changedTouches[0].clientY;
+}
+
+function moveTouch(e) {
+  if (initialX === null) {
+    return;
+  }
+  if (initialY === null) {
+    return;
+  }
+
+  var currentX = e.changedTouches[0].clientX;
+  var currentY = e.changedTouches[0].clientY;
+
+  var diffX = initialX - currentX;
+  var diffY = initialY - currentY;
+
+    if (diffY > 0 && Math.abs(diffY) > 30) { // check if swiped up
+      prev();
+      // Add function for up swipe here
+    } else if (diffY < 0 && Math.abs(diffY) > 30) { // check if swiped down
+      // Add function for down swipe here
+      next();
+    }
+
+  initialX = null;
+  initialY = null;
+}
+
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
